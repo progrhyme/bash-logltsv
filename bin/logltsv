@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -euo pipefail
+
+time=$(date +%FT%H:%M:%S%z)
+
+line="time:$time"
+
+for kv in "$@"; do
+  line="$line\t$kv"
+done
+
+echo -e $line
+
+exit
+
+: <<'__EOF__'
+
+=encoding utf8
+
+=head1 NAME
+
+B<logltsv> - A Handy CLI to print LTSV logs
+
+=head1 SYNOPSYS
+
+    logltsv key1:value1 key2:value2 [...]
+
+=head1 DESCRIPTION
+
+Print arguments in tab-separated way, adding I<time> key-value at the first
+entry of the line.
+
+=head1 AUTHORS
+
+YASUTAKE Kiyoshi E<lt>yasutake.kiyoshi@gmail.comE<gt>
+
+=cut
+
+__EOF__
+
+# vi: set ts=2 sw=2 sts=0 et ft=sh fenc=utf-8 :
